@@ -1,0 +1,53 @@
+.container {
+    margin: 50px 150px;
+}
+
+.containEdit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container .containEdit h1 {
+    box-sizing: border-box;
+    font-size: 28.8px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: auto;
+     outline: 0px solid transparent;
+}
+
+.container .containEdit span {
+    position: relative;
+    font-size: 0.7em;
+    margin-left: -50px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0;
+    border: 1px solid rgb(104, 192, 16);
+    border-radius: 2px;
+    transition: .3s;
+    transform: scale(1.2);
+}
+
+.container .containEdit:hover span {
+    margin-left: 20px;
+    opacity: 1;
+}
+
+.container .containEdit span:hover  {
+    background-color: rgb(104, 192, 16);
+    color: #fff
+}
+
+.contaier h1 span:active {
+    transform: scale(0.8);
+}
+
+.container h2 {
+    font-size: 1em;
+    opacity: 0.6;
+}
+
+.error {
+    border: 1px solid red;
+}

@@ -1,0 +1,49 @@
+<%- include('../template/header') %>
+<%- include('../componants/topbar') %>
+
+<link rel="stylesheet" href="/assets/css/login-register.css">
+
+<main>
+     <% if (locals.flash && locals.flash.error) { %>
+    <div class="error box" id="suc">
+        <p><%= flash.error%></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+    <% if (locals.flash && locals.flash.success) { %>
+    <div class="success box" id="suc">
+        <p><%= flash.success %></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+    <div class="container">
+    <h2>Connection</h2>
+        <form action="/login/" method="post" id="submit">
+            <div class="inputs">
+                <input type="text" id="username" name="userOrEmail" class="" placeholder="Email ou Nom d'utilisateur">
+                <input type="password" id="password" name="password" class="" placeholder="Mot de passe">
+            </div>
+            <div class="options">
+                <div class="remember-me">
+                    <div class="checkbox">
+                        <input id="checkbox" type="checkbox" name="remember_me">
+                        <span class="checked"><img src="/assets/img/check.svg"></span>
+                        <span class="not-checked"></span>
+                    </div>
+                    <p>Se souvenir de moi</p>
+                </div>
+                <a href="/password/">Mot de passe oublié</a>
+            </div>
+            <input type="submit" value="Se connecter">
+            <p class="redirect">Première visite ? <a href="/register">Inscrivez-vous</a>.</p>
+        </form>
+    </div>
+</main>
+
+    <script src="/assets/js/Error.js"></script>
+    <script src="/assets/js/Checkbox.js"></script>
+<%- include('../template/footer') %>

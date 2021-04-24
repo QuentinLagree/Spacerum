@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/assets/css/componants/topbar.css">
+<link rel="stylesheet" href="/assets/css/componants/responsiveTopbar.css">
+<div class="topbar">
+    <a class="menu-interaction" href="/home/">Acceuil</a>
+        <form action="" method="get">
+            <input type="text" placeholder="Rechercher un topic..." name="search">
+            </input>
+        </form>
+        <div class="burger">
+            <div class="layers"></div>
+        </div>
+    <% if (!locals.profil) { %>
+        <nav class="links menu-interaction">
+            <a class="menu-interaction" href="/register">S'inscrire</a>
+        <span>-</span>
+       <a class="menu-interaction" href="/login">Se connecter</a>
+    </nav>
+    </div>
+    <nav class="menu">
+        <ul>
+            <li><a href="/home/">Acceuil</a></li>
+            <li><a href="/login">Se connecter</a></li>
+            <li><a href="/register">S'inscrire</a></li>
+        </ul>
+    </nav>
+    <% } else { %>
+        <div class="profil" id="profil">
+            <h1><%= profil.pseudo %></h1>
+        </div>
+    <nav class="menu-profil">
+        <ul>
+            <li><a href="/profil/">Profile</a></li>
+            <li><a href="<% if (locals.path) { %><%= locals.path === "/" ? "/home" : locals.path %><% } %>/logout/">Déconnection</a></li>*
+        </ul>
+    </nav>
+    <% }%>
+</div>
+
+

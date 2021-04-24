@@ -1,0 +1,14 @@
+@media screen and (max-width: 730px) {
+    .menu-interaction { display: none;}
+
+    .topbar form { margin:  0; }
+
+    .topbar form input { 
+        width: 50%; 
+    }
+
+    .topbar .burger {display: block;}
+    
+     .menu {display: block;}
+
+}

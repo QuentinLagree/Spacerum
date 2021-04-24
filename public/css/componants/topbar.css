@@ -1,0 +1,266 @@
+.topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+    padding: 0 77px 0 43px;
+    height: 57px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--white);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+.topbar .links {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    right: 0;
+    z-index: 11;
+}
+
+.topbar .links span { color: var(--link-not-available);}
+
+.topbar a, .topbar .profil h1{
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--link-not-available);
+    transition: .3s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.topbar a:hover, .menu a:hover {color: var(--principal);}
+
+.topbar .account span { margin: 0 3px; }
+
+.topbar ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.topbar li { list-style-type: none; }
+
+/* Search Bar */
+
+.topbar form {
+    position: relative;
+    margin-left: 75px;
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+}
+
+.topbar form input {
+    width: 100%;
+}
+
+.topbar form input::placeholder {
+    color: var(--placeholder);
+}
+
+.topbar form span {
+    position: absolute;
+    width: 32px;
+    height: 100%;
+    transform: translateX(-100%);
+    border-radius: 0 2px 2px 0;
+    background-color: var(--principal);
+}
+
+
+/* Burger Icon */
+
+.topbar .burger {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.topbar .burger .layers {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 2px;
+    background-color: var(--menu);
+    border-radius: 0.5px;
+    transition: .3s;
+}
+
+
+.topbar .burger .layers::before,
+.topbar .burger .layers::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 2px;    
+    border-radius: 0.5px;
+    background-color: var(--menu);
+    transition: .3s;
+}
+
+.topbar .burger .layers::before {
+    top: 10px;
+}
+
+.topbar .burger .layers::after {
+    top: -8px;
+}
+
+.topbar .profil {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: rgb(51, 51, 51);
+    transition: .3s;
+}
+
+.topbar .profil h1 { z-index: 1;}
+
+.topbar .profil h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: .8px;
+    width: 90%;
+    transition: .3s;
+    background-color: transparent;
+}
+
+.topbar .profil h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: .8px;
+    width: 90%;
+    transition: .3s;
+    background-color: transparent;
+}
+
+.topbar .profil:hover h1 {
+    color: rgb(51, 51, 51);
+}
+
+.topbar .profil:hover h1::after {
+    bottom: 5px;
+    background-color: rgb(51, 51, 51);
+}
+
+
+/* IsOpen */
+
+.topbar .burger.isOpen .layers {
+    background-color: transparent;
+}
+
+.topbar .burger.isOpen .layers::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.topbar .burger:hover .layers,
+.topbar .burger:hover .layers::before,
+.topbar .burger:hover .layers::after{
+    background-color: #272727
+}
+
+.topbar .burger.isOpen:hover .layers {
+    background-color: transparent;
+}
+
+.topbar .burger.isOpen .layers::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.menu {
+    position: relative;
+    width: 100%;
+    height: 0;
+    background-color: var(--white);
+    z-index: 2;
+    box-sizing: border-box;
+    display: none;
+    padding-top: 0;
+    overflow: hidden;
+    border-top: 0.5px solid transparent;
+    transition: .3s;
+}
+
+.menu-profil {
+    position: absolute;
+    top: 57px;
+    right: 10px;
+    width: 15%;
+    background-color: var(--white);
+    z-index: -2;
+    box-sizing: border-box;
+    border-top: 0.5px solid transparent;
+    transition: .3s;
+    overflow: hidden;
+    height: 0;
+    display: block;
+    box-shadow: 0 0 2px transparent;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+
+.menu-profil.isOpen {
+    height: 77px;
+    z-index: 4;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.menu ul{
+    display: block;
+}
+
+ .menu-profil ul {
+     display: block;
+     text-align: center;
+     margin: 10px 0;
+ }
+
+.menu-profil ul li { margin: 10px 0}
+
+.menu ul li {
+    box-sizing: border-box;
+    list-style-type: none;
+    padding: 30px 0;
+}
+
+.menu ul li a {
+    position: absolute;
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.4em;
+    color: var(--link-not-available);
+    transition: .3s;
+}
+
+.menu.isOpen {
+    height: calc(100vh - 57px);
+    padding-top: 100px;
+    border-top: 0.5px solid var(--menu);
+}

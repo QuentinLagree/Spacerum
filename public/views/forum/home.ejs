@@ -1,0 +1,32 @@
+<%- include('../template/header') %>
+<%- include('../componants/topbar') %>
+<% if (logout) { %>
+   <%- include("../componants/logout")  %>  
+<% } %>
+
+<% if (locals.flash && locals.flash.error) { %>
+    <div class="error box" id="suc">
+        <p><%= flash.error%></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+    <% if (locals.flash && locals.flash.success) { %>
+    <div class="success box" id="suc">
+        <p><%= flash.success %></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+
+<link rel="stylesheet" href="/assets/css/home.css">
+
+<main>
+   <a href="/new"><span>+</span>Nouveau topic</a>
+</main>
+
+<script src="/assets/js/Error.js"></script>
+
+<%- include("../template/footer") %>

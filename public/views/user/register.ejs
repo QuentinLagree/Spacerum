@@ -1,0 +1,37 @@
+<%- include('../template/header') %>
+<%- include('../componants/topbar') %>
+
+<link rel="stylesheet" href="/assets/css/login-register.css">
+<main>
+    <% if (locals.flash && locals.flash.error) { %>
+    <div class="error box" id="suc">
+        <p><%= flash.error%></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+    <% if (locals.flash && locals.flash.success) { %>
+    <div class="success box" id="suc">
+        <p><%= flash.success %></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %>
+    <div class="container">
+    <h2>Inscription</h2>
+        <form action="/register" method="post">
+            <div class="inputs">
+                <input type="text" name="username" placeholder="Nom d'utilisateur">
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Mot de passe">
+                <input type="password" name="password_confirm" placeholder="Confirmer mot de passe">
+            </div>
+            <input type="submit" value="S'inscrire">
+            <p class="redirect">Vous possédez déjà un compte ? <a href="/login">Connectez-vous</a>.</p>
+        </form>
+    </div>
+</main>
+<script src="/assets/js/Error.js"></script>
+<%- include('../template/footer') %>

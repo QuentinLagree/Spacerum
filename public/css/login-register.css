@@ -1,0 +1,147 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0;    
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 57px);
+}
+
+main .container, main .box {
+    padding: 22px 28px 22px 28px;
+    background-color: var(--white);
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0 , 0, 0, 0.25);
+}
+
+main .box{
+    justify-content: space-between;
+}
+  .box.error {
+    border-bottom: 3px solid var(--error);
+    color: var(--error);
+}
+main .container h2 { 
+    margin-bottom: 28px; 
+    font-weight: 700;
+    font-size: 21px;
+}
+
+main .inputs { margin-bottom: 20px;}
+
+main .inputs input {
+    position: relative;
+    display: block;
+    width: 342px;
+    margin: 32px 0;
+}
+
+main .inputs input.error {
+    box-shadow: 0 0 4px 2px rgba(247, 82, 82, 0.7);
+    border: 1.5px solid rgba(247, 82, 82, 0.7);
+}
+
+
+main .inputs input:last-child {
+    position: relative;
+    display: block;
+    width: 342px;
+    margin-bottom: 0;
+}
+main .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+main .options a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--checkbox-border);
+}
+
+main .options a:hover {
+    text-decoration: underline;
+}
+
+
+main .options .remember-me {
+    display: flex;
+    align-items: flex-start;
+}
+
+main .options .checkbox {
+    position: relative;
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+}
+
+main .options .checkbox input{
+    display: none;
+    position: absolute;
+}
+
+main .checkbox .not-checked {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--checkbox-border);
+    cursor: pointer;
+}
+
+main .checkbox .checked {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--principal);
+    border-radius: 5px;
+    border: 1px solid var(--principal);
+    transform: scale(0);
+    z-index: 2;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+main .checkbox .checked img{
+    transform: scale(0.7);
+}
+
+main .checkbox.checked .checked{
+    transform: scale(1);
+}
+
+main .remember-me p {
+    font-size: 14px;
+}
+
+main form input[type="submit"] {
+    margin: 15px 0;
+}
+
+main form .redirect {
+    font-size: 13px;
+    color: var(--link-not-available);
+}
+
+main form .redirect a {
+    color: var(--principal);
+    text-decoration: none;
+}
+
+main form .redirect a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+<%- include('../template/header') %>
+<%- include('../componants/topbar') %>
+<% if (logout) { %>
+   <%- include("../componants/logout")  %>  
+<% } %>
+
+<% if (locals.flash && locals.flash.error) { %>
+    <div class="error box" id="suc">
+        <p><%= flash.error%></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+    <% if (locals.flash && locals.flash.success) { %>
+    <div class="success box" id="suc">
+        <p><%= flash.success %></p>
+        <div class="cross">
+            <div class="layers"></div>
+        </div>
+    </div>
+   <% } %> 
+
+<link rel="stylesheet" href="/assets/css/new.css">   
+
+<main>
+    <h1>Creation d'un nouveau topic</h1>
+    <form action="/new" method="post">
+        <input type="text" name="title" value="test" placeholder="Insère le titre de ton topic">
+        <textarea placeholder="Insère le contenue du topic" name="content" id="" cols="30" rows="10">test</textarea>
+        <div>
+            <input type="submit" value="Créer">
+        </div>
+    </form>
+</main>
+
+<script src="/assets/js/Error.js"></script>
+
+<%- include("../template/footer") %>
