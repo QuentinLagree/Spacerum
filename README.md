@@ -1,2 +1,2 @@
 # Spacerum
-The forum for begin with nodejs
+I intermediary in nodejs and I need advice for improve myself, Thanks :)... 
