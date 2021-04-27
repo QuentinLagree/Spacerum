@@ -27,6 +27,11 @@ main .box{
     border-bottom: 3px solid var(--error);
     color: var(--error);
 }
+
+  .box.success {
+    border-bottom: 3px solid var(--success);
+    color: var(--success);
+}
 main .container h2 { 
     margin-bottom: 28px; 
     font-weight: 700;

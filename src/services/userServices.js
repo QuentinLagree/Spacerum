@@ -24,22 +24,38 @@ class userServices {
         return message
     }
 
-    static async checkUserExist(fields) {
+    static async checkInDb(data, path) {
             const user = await User.findOne({
                 where: {
                     [Op.or]: [
-                        { username: fields.username },
-                        { email: fields.email }
+                        { username: (typeof data.username === "undefined") ? (!data.username) ? data.userOrEmail : null : null },
+                        { email: (typeof data.email === "undefined") ? (!data.email) ? data.userOrEmail : null : null },
+                        { uuid: (typeof data.uuid !== "undefined") ? data.uuid : null}
                     ]
                 }
             })
-        if (user !== null) {
-            return { message: (fields.username === user.username && fields.email === user.email) ? "Le nom d'utilisateur et l'email sont déjà utilisés " : (fields.username === user.username) ? "Le nom d'utilisateur est déjà utilisé" : (fields.email === user.email) ? "L'email est déjà utilisé" : false }
-        } else {
-            return null
+        switch (path) {
+            case "register":
+                if (user !== null) {
+                    return { message: (data.username === user.username && data.email === user.email) ? "Le nom d'utilisateur et l'email sont déjà utilisés " : (data.username === user.username) ? "Le nom d'utilisateur est déjà utilisé" : (data.email === user.email) ? "L'email est déjà utilisé" : false }
+                } else {
+                    return null
+                }
+            case "login":
+                if (user === null) {
+                    return {user: user, message: "Le nom ou l'email est incorrect"}
+                } else {
+                    return {user: user}
+                }
+        
+            default:
+                break;
         }
     }
-        
+
+    static checkPassword (password_plain, password_hash) {
+        return bcrypt.compareSync(password_plain, password_hash);
+    }
 }
 
 module.exports = userServices

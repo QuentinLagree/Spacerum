@@ -9,7 +9,7 @@
         <div class="cross">
             <div class="layers"></div>
         </div>
-    </div>
+    </div>  
    <% } %> 
     <% if (locals.flash && locals.flash.success) { %>
     <div class="success box" id="suc">
@@ -33,5 +33,17 @@
         </form>
     </div>
 </main>
+<script>
+    document.addEventListener('touchstart', this.touchstart);
+        document.addEventListener('touchmove', this.touchmove);
+
+        function touchstart(e) {
+            e.preventDefault()
+        }
+
+        function touchmove(e) {
+            e.preventDefault()
+        }
+</script>
 <script src="/assets/js/Error.js"></script>
 <%- include('../template/footer') %>

@@ -9,7 +9,7 @@ burgerIcon.addEventListener("click", (e) => {
 })
 
 window.addEventListener("resize", (e) => {
-    if (icon !== undefined) {
+    if (typeof icon !== "undefined") {
         if (window.innerWidth > 750 && icon.classList.contains("isOpen")) {
             burgerIcon.classList.remove("isOpen")
             menu.classList.remove("isOpen")

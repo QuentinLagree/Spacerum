@@ -30,7 +30,6 @@ app.use("/", userNotConnectedRoute.notOnline)
 
 
 
-
 app.listen({ port: 8080 }, async () => {
     console.log("Server is ok on http://localhost:8080")
     await sequelize.authenticate().then(() => { console.log("The database is ready")})
