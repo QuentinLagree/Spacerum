@@ -4,6 +4,7 @@ const { sequelize, User } = require("../models");
 let bcrypt = require("bcrypt")
 const saltRounds = 10;
 const Op = require('Sequelize').Op;
+const transporter = require("../config/mailer")
 
 
 class userServices {
@@ -53,8 +54,24 @@ class userServices {
         }
     }
 
-    static checkPassword (password_plain, password_hash) {
-        return bcrypt.compareSync(password_plain, password_hash);
+    static checkPassword (password_plain, password_hash) {return bcrypt.compareSync(password_plain, password_hash)}
+
+    static sendMail (email) {
+        let options = {
+            from: process.env.USER_MAIL,
+            to: email,
+            subject: "SPACERUM / Modification de mot de passe",
+            text: "BLABLA"
+        }
+
+        transporter.sendMail(options, (error, info) => {
+            if (error) {throw error} else { return true}
+        })
+    }
+
+    static validateEmail (email) {
+        const validator  = require("email-validator")
+        return validator.validate(email)
     }
 }
 

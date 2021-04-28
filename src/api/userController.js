@@ -53,9 +53,8 @@ exports.notOnline = (function() {
     })
 
     router.post("/register", async (req, res) => {
-        const error = userServices.checkFieldsEmpty(req.body)
-        if (error !== null) {
-            req.flash("error", error)
+        if (userServices.checkFieldsEmpty(req.body) !== null) {
+            req.flash("error", userServices.checkFieldsEmpty(req.body))
             res.redirect("/register")
         } else {
             userServices.checkInDb(req.body, "register").then((response) =>{
@@ -69,12 +68,11 @@ exports.notOnline = (function() {
                 }
             })
         }
-    })*
+    })
 
     router.post("/login", async (req, res) => {
-        const error = userServices.checkFieldsEmpty(req.body)
-        if (error !== null) {
-            req.flash("error", error)
+        if (userServices.checkFieldsEmpty(req.body) !== null) {
+            req.flash("error", userServices.checkFieldsEmpty(req.body))
             res.redirect("/login")
         } else {
             userServices.checkInDb(req.body, "login").then((response) => {
@@ -91,6 +89,22 @@ exports.notOnline = (function() {
                     }
                 }
             }) 
+        }
+    })
+
+    router.post("/password", async (req, res) => {
+        if (userServices.checkFieldsEmpty(req.body) !== null) {
+            req.flash("error", userServices.checkFieldsEmpty(req.body))
+            res.redirect("/password")
+        } else {
+            if (!userServices.validateEmail(req.body.email)) {
+                req.flash("error", "Veuillez saisir un email valide")
+                res.redirect("/password")
+            } else {
+                events.emit("send_mail", req.body.email)
+                req.flash("success", "Email envoyé")
+                res.redirect("/password")
+            }
         }
     })
 
