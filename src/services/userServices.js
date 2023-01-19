@@ -5,6 +5,8 @@ let bcrypt = require("bcrypt")
 const saltRounds = 10;
 const Op = require('Sequelize').Op;
 const transporter = require("../config/mailer")
+const ejs = require("ejs")
+const fs = require("fs")
 
 
 class userServices {
@@ -54,26 +56,44 @@ class userServices {
         }
     }
 
+    static sendToken(email, token) {
+        const user = User.update({token: token}, {
+            where: { email: email }
+        })
+    }
+
     static checkPassword (password_plain, password_hash) {return bcrypt.compareSync(password_plain, password_hash)}
 
     static sendMail (email) {
-        let options = {
-            from: process.env.USER_MAIL,
-            to: email,
-            subject: "SPACERUM / Modification de mot de passe",
-            text: "BLABLA"
-        }
-
-        transporter.sendMail(options, (error, info) => {
-
-            console.log(info)
-            if (error) {throw error} else { return true}
-        })
+        let options;
+        let token = this.createToken();
+        fs.readFile(appRoot + "/public/views/mails/forgetPasswordMail.ejs", 'utf8', (err, data) => {
+            if (err) {
+                return console.log(err);
+            }
+            options = {
+                from: process.env.USER_MAIL,
+                to: email,
+                subject: "SPACERUM / Modification de mot de passe",
+                html: ejs.render(data, {
+                    host: "http://" + process.env.HOST_SERVER + ":" + process.env.PORT_SERVER,
+                    email: email,
+                    token: token
+                })
+            }
+            transporter.sendMail(options, (error, info) => {
+                if (error) { throw error } else { return true }
+            })
+        });
     }
 
     static validateEmail (email) {
         const validator  = require("email-validator")
         return validator.validate(email)
+    }
+
+    static createToken () {
+        return require("randomstring").generate();
     }
 }
 

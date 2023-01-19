@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    token: {
+      type: DataTypes.TEXT("medium"),
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'User',
