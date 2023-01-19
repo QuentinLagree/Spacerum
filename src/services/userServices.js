@@ -65,6 +65,8 @@ class userServices {
         }
 
         transporter.sendMail(options, (error, info) => {
+
+            console.log(info)
             if (error) {throw error} else { return true}
         })
     }
