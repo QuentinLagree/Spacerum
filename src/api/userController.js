@@ -41,7 +41,13 @@ exports.notOnline = (function() {
         })
     })
 
+    /*
+        GET PASSWORD/RECUP/?EMAIL/?TOKEN
+    */
     router.get("/password/recup/:email/:token", (req, res) => {
+        userServices.checkInDbIfUserHaveToken(req.params.email, req.params.token).then((response) => {
+            console.log(response)
+        })
         hasConnected({ req, res }, "/home", {
             render_path: "user/newPassword",
             content: {

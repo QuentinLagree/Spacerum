@@ -42,7 +42,7 @@ describe("UserControllerTest", () => {
         })
     })
 
-    it.only("delete", async () => {
+    it.skip("delete", async () => {
         users = await User.destroy({
             where: {},
             truncate: true

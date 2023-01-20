@@ -27,6 +27,18 @@ class userServices {
         return message
     }
 
+    static async checkInDbIfUserHaveToken(email, token) {
+        const user = await User.findOne({
+            where: {
+                [Op.and]: [
+                    {email: email},
+                    {token: token}
+                ]
+            }
+        })
+        return (user == null) ? null : user
+    }
+
     static async checkInDb(data, path) {
             const user = await User.findOne({
                 where: {
@@ -39,6 +51,7 @@ class userServices {
             })
         switch (path) {
             case "register":
+                console.log("reg")
                 if (user !== null) {
                     return { message: (data.username === user.username && data.email === user.email) ? "Le nom d'utilisateur et l'email sont déjà utilisés " : (data.username === user.username) ? "Le nom d'utilisateur est déjà utilisé" : (data.email === user.email) ? "L'email est déjà utilisé" : false }
                 } else {
@@ -50,15 +63,16 @@ class userServices {
                 } else {
                     return {user: user}
                 }
-        
             default:
                 break;
         }
     }
 
-    static sendToken(email, token) {
-        const user = User.update({token: token}, {
-            where: { email: email }
+    static checkSendMail (email) {
+        return user = User.findOne({
+            where: {
+                email: email
+            }
         })
     }
 
@@ -66,7 +80,7 @@ class userServices {
 
     static sendMail (email) {
         let options;
-        let token = this.createToken();
+        let token = this.saveToken(email);
         fs.readFile(appRoot + "/public/views/mails/forgetPasswordMail.ejs", 'utf8', (err, data) => {
             if (err) {
                 return console.log(err);
@@ -91,9 +105,14 @@ class userServices {
         const validator  = require("email-validator")
         return validator.validate(email)
     }
+    
+    static saveToken (email) {
+        let token = require("randomstring").generate()
+        User.update({ token: token }, {
+            where: { email: email }
+        })
 
-    static createToken () {
-        return require("randomstring").generate();
+        return token
     }
 }
 
