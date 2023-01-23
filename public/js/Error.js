@@ -1,12 +1,16 @@
 const errorBox = document.querySelector(".box");
+
 function remove () {
-    errorBox.classList.add("hide")
-    setTimeout(() => {
-        errorBox.classList.add("end")
+    if (errorBox !== null) {
+        errorBox.classList.add("hide")
         setTimeout(() => {
-            errorBox.remove()
-        }, 800);
-    }, 500);
+            errorBox.classList.add("end")
+            setTimeout(() => {
+                errorBox.remove()
+            }, 800);
+        }, 500);
+    }
+    
 }
 
 if (typeof errorBox !== "undefined") {
