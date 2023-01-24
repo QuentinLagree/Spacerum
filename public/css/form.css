@@ -52,6 +52,34 @@ main .inputs input:last-child {
     margin-bottom: 0;
 }
 
+
+.contain_password {
+    position: relative;
+}
+
+.contain_password .eye {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 40px;
+    height: 34px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contain_password .eye svg {
+    transform: scale(1.1);
+    fill: var(--secondary);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.contain_password .eye svg:hover {
+    fill: var(--secondary-hover);
+}
+
 main .options {
     display: flex;
     flex-direction: row;
@@ -63,7 +91,7 @@ main .options {
 main .options a {
     text-decoration: none;
     font-size: 14px;
-    color: var(--checkbox-border);
+    color: var(--secondary);
 }
 
 main .options a:hover {
@@ -76,6 +104,10 @@ main .options .remember-me {
     align-items: flex-start;
     cursor: pointer;
     user-select: none;
+}
+
+main .options .remember-me:hover p {
+    text-decoration: underline;
 }
 
 main .options .checkbox {
@@ -96,7 +128,7 @@ main .checkbox .not-checked {
     width: 100%;
     background-color: transparent;
     border-radius: 5px;
-    border: 1px solid var(--checkbox-border);
+    border: 1px solid var(--secondary);
     cursor: pointer;
 }
 
@@ -129,7 +161,7 @@ main .remember-me {
 
 main .remember-me p {
     font-size: 14px;
-    color: var(--checkbox-border)
+    color: var(--secondary)
 }
 
 main form input[type="submit"] {

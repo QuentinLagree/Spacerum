@@ -25,10 +25,7 @@
         <form action="/login/" method="post" id="submit">
             <div class="inputs">
                 <input type="text" id="username" name="userOrEmail" class="" placeholder="Email ou Nom d'utilisateur">
-                <div class="contain_password">
-                    <input type="password" id="password" name="password" class="" placeholder="Mot de passe">
-                    <h1 class="eye">Salut</h1>
-                </div>
+                <%- include("../componants/password-eye-input") %> 
             </div>
             <div class="options">
                 <div class="remember-me">
@@ -53,4 +50,5 @@
 </main>
 
 <script src="/assets/js/Checkbox.js"></script>
+
 <%- include('../template/footer') %>

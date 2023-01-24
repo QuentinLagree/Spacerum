@@ -2,14 +2,15 @@
 /* Variables */
 :root {
     --principal: #75a3e9;
-    --submit-hover: #72a1e7;
+    --submit-hover: #3b7ad9;
     --white: #fff;
     --background: #F4F4F4;
     --link-not-available: rgba(120, 120, 120, 0.753);
     --input-background: #EFEFEF;    
     --placeholder: rgba(120, 120, 120, .51);
     --menu: rgba(36, 36, 36, 0.51);
-    --checkbox-border: #9E9E9E;
+    --secondary: #9E9E9E;
+    --secondary-hover: #676565;
     --error: #f75252;
     --error_important: #bf3939;
     --success: #56b928;
