@@ -1,7 +1,7 @@
 <%- include('../template/header') %>
 <%- include('../componants/topbar') %>
 
-<link rel="stylesheet" href="/assets/css/login-register.css">
+<link rel="stylesheet" href="/assets/css/form.css">
 
 <main>
      <% if (locals.flash && locals.flash.error) { %>
@@ -25,7 +25,10 @@
         <form action="/login/" method="post" id="submit">
             <div class="inputs">
                 <input type="text" id="username" name="userOrEmail" class="" placeholder="Email ou Nom d'utilisateur">
-                <input type="password" id="password" name="password" class="" placeholder="Mot de passe">
+                <div class="contain_password">
+                    <input type="password" id="password" name="password" class="" placeholder="Mot de passe">
+                    <h1 class="eye">Salut</h1>
+                </div>
             </div>
             <div class="options">
                 <div class="remember-me">
@@ -41,7 +44,7 @@
                     </div>
                     <p>Se souvenir de moi</p>
                 </div>
-                <a href="/password/">Mot de passe oublié</a>
+                <a href="/password/">Mot de passe oublié  ?</a>
             </div>
             <input type="submit" value="Se connecter">
             <p class="redirect">Première visite ? <a href="/register">Inscrivez-vous</a>.</p>
