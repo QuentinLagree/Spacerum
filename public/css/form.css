@@ -53,33 +53,6 @@ main .inputs input:last-child {
 }
 
 
-.contain_password {
-    position: relative;
-}
-
-.contain_password .eye {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 40px;
-    height: 34px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contain_password .eye svg {
-    transform: scale(1.1);
-    fill: var(--secondary);
-    cursor: pointer;
-    transition: .3s;
-}
-
-.contain_password .eye svg:hover {
-    fill: var(--secondary-hover);
-}
-
 main .options {
     display: flex;
     flex-direction: row;

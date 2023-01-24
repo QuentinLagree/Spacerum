@@ -5,15 +5,15 @@ const password_input = document.querySelector("#password")
 
 eye_open.addEventListener("click", (e) => {
     e.preventDefault();
-    eye_open.style.display = "none";
-    eye_close.style.display = "block";
+    eye_open.style.scale = "0";
+    eye_close.style.scale = "1";
     password_input.setAttribute("type", "text")
 })
 
 eye_close.addEventListener("click", (e) => {
     e.preventDefault();
-    eye_open.style.display = "block";
-    eye_close.style.display = "none";
+    eye_open.style.scale = "1";
+    eye_close.style.scale = "0";
     password_input.setAttribute("type", "password")
 
 })
