@@ -26,9 +26,18 @@ main .box{
 }
 
 main .container h2 { 
-    margin-bottom: 28px; 
+    max-width: 342px;
+    margin-bottom: 5px; 
     font-weight: 700;
-    font-size: 1.67rem;
+    font-size: 1.57rem;
+}
+
+main .container h3 {
+    max-width: 342px;
+    color: var(--secondary-hover);
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-left: 1px;
 }
 
 main .inputs { margin-bottom: 20px;}
@@ -37,7 +46,7 @@ main .inputs input {
     position: relative;
     display: block;
     width: 342px;
-    margin: 32px 0;
+    margin: 20px 0;
 }
 
 main .inputs input.error {
